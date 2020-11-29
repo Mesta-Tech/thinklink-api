@@ -1,0 +1,11 @@
+{
+  "name": "feathersBackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Mesta-Tech/thinklink-web.git",
+  "author": "Tolga Berk Ordanuç <tolgaberkordanuc@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@feathersjs/feathers": "^4.5.10"
+  }
+}
