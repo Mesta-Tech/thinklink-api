@@ -1,6 +1,6 @@
-# feathersBackend
+# thinklink-api
 
-> An matching app for intellectual people
+> A matching app for intellectual people
 
 ## About
 
@@ -14,7 +14,7 @@ Getting up and running is as easy as 1, 2, 3.
 2. Install your dependencies
 
     ```
-    cd path/to/feathersBackend
+    cd path/to/thinklink-api
     npm install
     ```
 

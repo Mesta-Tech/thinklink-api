@@ -9,8 +9,11 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "R/+BHlO3PtIGkLUhv+TDJs6x/0o=",
-    "authStrategies": ["jwt", "local"],
+    "secret": "LmGtSKqPGQ4RJDzANRPSV5HaCvQ=",
+    "authStrategies": [
+      "jwt",
+      "local"
+    ],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -29,9 +32,13 @@
       "google": {
         "key": "<google oauth key>",
         "secret": "<google oauth secret>",
-        "scope": ["email", "profile", "openid"]
+        "scope": [
+          "email",
+          "profile",
+          "openid"
+        ]
       }
     }
   },
-  "postgres": "postgresql://tolga@localhost:5432/thinklinkDB"
+  "postgres": "postgres://tolga:@localhost:5432/thinklink_api"
 }

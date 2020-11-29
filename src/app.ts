@@ -3,12 +3,12 @@ import favicon from 'serve-favicon';
 import compress from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
+import morgan from 'morgan';
 
 import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
-
 
 import { Application } from './declarations';
 import logger from './logger';
@@ -22,14 +22,19 @@ import sequelize from './sequelize';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers());
-export type HookContext<T = any> = { app: Application } & FeathersHookContext<T>;
+export type HookContext<T = any> = {
+	app: Application;
+} & FeathersHookContext<T>;
 
 // Load app configuration
 app.configure(configuration());
+app.use(morgan('tiny'));
 // Enable security, CORS, compression, favicon and body parsing
-app.use(helmet({
-  contentSecurityPolicy: false
-}));
+app.use(
+	helmet({
+		contentSecurityPolicy: false,
+	}),
+);
 app.use(cors());
 app.use(compress());
 app.use(express.json());
