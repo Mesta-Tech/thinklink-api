@@ -1,3 +1,4 @@
 {
-    "workspace.isHidden": true
+    "workspace.isHidden": true,
+    "sqltools.connections": []
 }

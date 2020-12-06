@@ -6,22 +6,32 @@ import { HookReturn } from 'sequelize/types/lib/hooks';
 
 export default function (app: Application): typeof Model {
   const sequelizeClient: Sequelize = app.get('sequelizeClient');
-  const musics = sequelizeClient.define('musics', {
-    text: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-  }, {
-    hooks: {
-      beforeCount(options: any): HookReturn {
-        options.raw = true;
-      }
-    }
-  });
+  const musics = sequelizeClient.define(
+    'musics',
+    {
+      text: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+    },
+    {
+      hooks: {
+        beforeCount(options: any): HookReturn {
+          options.raw = true;
+        },
+      },
+      timestamps: true,
+      paranoid: true,
+    },
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (musics as any).associate = function (models: any): void {
     // Define associations here
+    musics.belongsToMany(models.users, {
+      through: models.users_musics,
+    });
+    musics.hasMany(models.genres);
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
   };
 

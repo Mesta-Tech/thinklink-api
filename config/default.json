@@ -1,44 +1,37 @@
 {
-  "host": "localhost",
-  "port": 3030,
-  "public": "../public/",
-  "paginate": {
-    "default": 10,
-    "max": 50
-  },
-  "authentication": {
-    "entity": "user",
-    "service": "users",
-    "secret": "LmGtSKqPGQ4RJDzANRPSV5HaCvQ=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
-    "jwtOptions": {
-      "header": {
-        "typ": "access"
-      },
-      "audience": "https://yourdomain.com",
-      "issuer": "feathers",
-      "algorithm": "HS256",
-      "expiresIn": "1d"
-    },
-    "local": {
-      "usernameField": "email",
-      "passwordField": "password"
-    },
-    "oauth": {
-      "redirect": "/",
-      "google": {
-        "key": "<google oauth key>",
-        "secret": "<google oauth secret>",
-        "scope": [
-          "email",
-          "profile",
-          "openid"
-        ]
-      }
-    }
-  },
-  "postgres": "postgres://tolga:@localhost:5432/thinklink_api"
+	"host": "localhost",
+	"port": 3030,
+	"public": "../public/",
+	"paginate": {
+		"default": 10,
+		"max": 50
+	},
+	"authentication": {
+		"entity": "user",
+		"service": "users",
+		"secret": "LmGtSKqPGQ4RJDzANRPSV5HaCvQ=",
+		"authStrategies": ["jwt", "local"],
+		"jwtOptions": {
+			"header": {
+				"typ": "access"
+			},
+			"audience": "https://yourdomain.com",
+			"issuer": "feathers",
+			"algorithm": "HS256",
+			"expiresIn": "100d"
+		},
+		"local": {
+			"usernameField": "email",
+			"passwordField": "password"
+		},
+		"oauth": {
+			"redirect": "/",
+			"google": {
+				"key": "<google oauth key>",
+				"secret": "<google oauth secret>",
+				"scope": ["email", "profile", "openid"]
+			}
+		}
+	},
+	"postgres": "postgres://postgres:Tb276554!@localhost:5432/thinklink_api"
 }

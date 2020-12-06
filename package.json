@@ -56,7 +56,8 @@
     "pg": "^8.5.1",
     "sequelize": "^6.3.5",
     "serve-favicon": "^2.5.0",
-    "winston": "^3.0.0"
+    "winston": "^3.0.0",
+    "yup": "^0.32.1"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.33",
@@ -66,6 +67,7 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mocha": "^8.0.4",
     "@types/morgan": "^1.9.2",
+    "@types/sequelize": "^4.28.9",
     "@types/serve-favicon": "^2.5.1",
     "@types/validator": "^10.0.0",
     "@typescript-eslint/eslint-plugin": "^4.8.2",
