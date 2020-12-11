@@ -1,0 +1,8 @@
+{
+  "extends": ["eslint:recommended", "airbnb-typescript/base"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2020
+  },
+  "rules": { "@typescript-eslint/no-unused-vars": "off" }
+}
