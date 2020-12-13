@@ -1,5 +1,5 @@
 import 'reflect-metadata';
 import main from './src';
 
-main();
+void main();
 export {};

@@ -1,22 +1,28 @@
-import { Entity, Column, ManyToOne } from 'typeorm';
+import { Entity, Column, ManyToOne, OneToOne } from 'typeorm';
 import BaseEntity from './BaseEntity';
+import { Resource } from './Resources/Resource';
 import { User } from './User';
 
 @Entity({ name: 'images' })
-// eslint-disable-next-line import/prefer-default-export
 export class Image extends BaseEntity {
   // * Properties
   @Column()
-  url!: string;
+  url: string;
 
   @Column()
-  isMain!: boolean;
+  isMain: boolean;
+
+  @Column()
+  isProfileImage: boolean;
 
   // * Relations
 
-  @ManyToOne(() => User, (u: User) => u.images)
-  user!: User;
+  @ManyToOne(() => User, (u: User) => u.images, { nullable: true })
+  user: User;
 
-  @Column()
-  userId!: string;
+  @Column({ nullable: true })
+  userId: string;
+
+  @OneToOne(() => Resource, { nullable: true })
+  resource: Resource;
 }

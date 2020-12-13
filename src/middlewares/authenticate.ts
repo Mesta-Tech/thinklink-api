@@ -1,16 +1,18 @@
-import { RequestHandler } from 'express';
-import jwt from 'jsonwebtoken';
-import { StatusCodes } from 'http-status-codes';
+import { RequestHandler } from '../typings';
+import { Token } from '../entities/Token';
 
-const authenticate: RequestHandler<{ user: any }> = (req, res, next) => {
-  console.log('authenticating => ', req.url);
-  const authToken = req.header('authorization');
-  const verified = jwt.verify(authToken || '', process.env.JWT_SECRET || '');
-  if (!verified) {
-    return res.status(StatusCodes.FORBIDDEN).send('Method Not Allowed!');
+/**
+ * Checks token integrity and if its ok, it adds user to res.locals.user
+ */
+const authenticateToken = (): RequestHandler => async (req, res, next) => {
+  const authToken = req.header('Authorization')?.replace('Bearer ', '');
+  try {
+    const userInfo = await Token.verifyToken(authToken);
+    res.locals.user = userInfo.user;
+    return next();
+  } catch (err) {
+    console.log(err);
+    next(err);
   }
-
-  req.params.user = verified;
-  return next();
 };
-export default authenticate;
+export default authenticateToken;
