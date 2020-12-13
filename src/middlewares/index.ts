@@ -9,7 +9,7 @@ const registerMiddlewares = (app: Express): void => {
     app.use(morgan<Request, Response>('tiny', {}));
   }
   app.use(cors<Request>());
-  app.use(urlencoded());
+  app.use(urlencoded({ extended: true }));
   app.use(json());
   app.use(helmet());
 };

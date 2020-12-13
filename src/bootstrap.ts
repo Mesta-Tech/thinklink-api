@@ -3,9 +3,10 @@ import express from 'express';
 import DotEnv from 'dotenv';
 import registerMiddlewares from './middlewares';
 import registerRoutes from './routes';
+// import getEntities from './helpers/getEntities';
 
 export default async () => {
-  DotEnv.config();
+  DotEnv.config({ path: '../.env' });
 
   const app = express();
 
@@ -19,7 +20,7 @@ export default async () => {
   try {
     await createConnection();
   } catch (err) {
-    throw new Error('DATABASE HATASI');
+    throw new Error(`DATABASE HATASI ${err}`);
   }
 
   return app;

@@ -4,5 +4,9 @@
     "project": "./tsconfig.json",
     "ecmaVersion": 2020
   },
-  "rules": { "@typescript-eslint/no-unused-vars": "off" }
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "import/no-cycle": "off",
+    "object-curly-newline": "off"
+  }
 }
