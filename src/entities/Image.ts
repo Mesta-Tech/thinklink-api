@@ -9,10 +9,10 @@ export class Image extends BaseEntity {
   @Column()
   url: string;
 
-  @Column()
+  @Column({ name: 'is_main' })
   isMain: boolean;
 
-  @Column()
+  @Column({ name: 'is_profile_image' })
   isProfileImage: boolean;
 
   // * Relations

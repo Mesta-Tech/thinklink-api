@@ -1,29 +1,15 @@
-import { Column, JoinColumn, OneToOne, ManyToMany, ChildEntity } from 'typeorm';
-import { Genre } from '../Genre';
-import { Image } from '../Image';
+import { Column, ChildEntity } from 'typeorm';
 import { Resource } from '../Resources/Resource';
 
 @ChildEntity()
 export class Book extends Resource {
   // * Properties
-  @Column()
+  @Column({ nullable: false })
   title!: string;
 
-  @Column()
+  @Column({ nullable: false })
   author!: string;
 
-  @Column()
+  @Column({ nullable: false })
   literature!: string;
-
-  @Column()
-  isActive!: boolean;
-
-  // * Relations
-
-  @OneToOne(() => Image, { cascade: true })
-  @JoinColumn()
-  image!: Image;
-
-  @ManyToMany(() => Genre, (b: Genre) => b.resources)
-  genres!: Genre[];
 }

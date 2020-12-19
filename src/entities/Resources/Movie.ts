@@ -1,12 +1,10 @@
-import { Column, OneToOne, JoinColumn, ManyToMany, ChildEntity } from 'typeorm';
-import { Genre } from '../Genre';
-import { Image } from '../Image';
+import { Column, ChildEntity } from 'typeorm';
 import { Resource } from './Resource';
 
 @ChildEntity()
 export class Movie extends Resource {
   // * Properties
-  @Column()
+  @Column({ nullable: false })
   title!: string;
 
   @Column()
@@ -17,16 +15,4 @@ export class Movie extends Resource {
 
   @Column()
   summary!: string;
-
-  @Column()
-  isActive!: boolean;
-
-  // * Relations
-
-  @OneToOne(() => Image)
-  @JoinColumn()
-  image!: Image;
-
-  @ManyToMany(() => Genre, (b: Genre) => b.resources)
-  genres!: Genre[];
 }
