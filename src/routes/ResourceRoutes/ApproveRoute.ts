@@ -1,11 +1,14 @@
+import { BookController, MovieController, MusicController } from '../../controllers';
 import { Router } from 'express';
-import { notImplemented } from '../../helpers/notImplemented';
 
 const Approve = (): Router => {
   const ApproveRoute = Router();
-  ApproveRoute.post('/book', notImplemented);
-  ApproveRoute.post('/movie', notImplemented);
-  ApproveRoute.post('/music', notImplemented);
+  const bookController = new BookController();
+  const musicController = new MusicController();
+  const movieController = new MovieController();
+  ApproveRoute.post('/book', bookController.approve);
+  ApproveRoute.post('/movie', movieController.approve);
+  ApproveRoute.post('/music', musicController.approve);
   return ApproveRoute;
 };
 

@@ -1,6 +1,8 @@
-import { Entity, Column, ManyToOne, OneToOne } from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Movie } from './Resources/Movie';
+import { Music } from './Resources/Music';
+import { Book } from './Resources/Book';
 import BaseEntity from './BaseEntity';
-import { Resource } from './Resources/Resource';
 import { User } from './User';
 
 @Entity({ name: 'images' })
@@ -23,6 +25,26 @@ export class Image extends BaseEntity {
   @Column({ nullable: true })
   userId: string;
 
-  @OneToOne(() => Resource, { nullable: true })
-  resource: Resource;
+  //
+
+  @Column()
+  movieId!: string;
+
+  @ManyToOne(() => Movie, (r: Movie) => r.images)
+  @JoinColumn()
+  movie!: Movie;
+
+  @Column()
+  bookId!: string;
+
+  @ManyToOne(() => Book, (r: Book) => r.images)
+  @JoinColumn()
+  book!: Book;
+
+  @Column()
+  musicId!: string;
+
+  @ManyToOne(() => Music, (r: Music) => r.images)
+  @JoinColumn()
+  music!: Music;
 }

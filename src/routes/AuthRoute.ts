@@ -1,4 +1,4 @@
-import AuthController from '../controllers/AuthController';
+import { AuthController } from '../controllers';
 import authenticateToken from '../middlewares/authenticate';
 import hashPassword from '../middlewares/hashPassword';
 import express, { Router } from 'express';

@@ -1,13 +1,15 @@
 import { Router } from 'express';
-import BookController from '../../controllers/BookController';
-import { notImplemented } from '../../helpers/notImplemented';
+import { MusicController, MovieController } from '../../controllers';
+import BookController from '../../controllers/ResourceControllers/BookController';
 
 const Add = (): Router => {
   const AddRoute = Router();
   const bookController = new BookController();
+  const musicController = new MusicController();
+  const movieController = new MovieController();
   AddRoute.post('/book', bookController.create);
-  AddRoute.post('/movie', notImplemented);
-  AddRoute.post('/music', notImplemented);
+  AddRoute.post('/movie', movieController.create);
+  AddRoute.post('/music', musicController.create);
   return AddRoute;
 };
 

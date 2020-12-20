@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
-import { RequestHandler } from '../typings';
+import { RequestHandlerT } from '../typings';
 
-const hashPassword: RequestHandler<{ password: string }> = (req, _res, next) => {
+const hashPassword: RequestHandlerT<{ password: string }> = (req, _res, next) => {
   const pass = req.body.password;
 
   if (pass) {

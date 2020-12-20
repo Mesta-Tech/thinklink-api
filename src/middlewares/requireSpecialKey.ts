@@ -1,6 +1,6 @@
-import { RequestHandler } from '../typings';
+import { RequestHandlerT } from '../typings';
 
-const requireSpecialKey = (): RequestHandler => (_req, _res, next) => {
+const requireSpecialKey = (): RequestHandlerT => (_req, _res, next) => {
   // TODO implement for only admins routes
   next();
 };

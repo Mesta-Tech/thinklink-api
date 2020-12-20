@@ -11,4 +11,10 @@ export default async (): Promise<void> => {
   playground().catch((err) => {
     console.log(err);
   });
+
+  // TODO implement pagination for entities
+  // TODO implement match tables
+  // TODO implement black list tables
+  // TODO implement oauth scenarios for google and apple
+  // TODO implement conversation tables
 };

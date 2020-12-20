@@ -1,6 +1,8 @@
 import { Entity, Column, OneToMany, getRepository } from 'typeorm';
+import { UsersMusics } from './Resources/UsersMusics';
+import { UsersMovies } from './Resources/UsersMovies';
+import { UsersBooks } from './Resources/UsersBooks';
 import BaseEntity from './BaseEntity';
-import { UsersResources } from './Resources/UsersResources';
 import { Image } from './Image';
 import { Token } from './Token';
 @Entity({ name: 'users' })
@@ -35,11 +37,17 @@ export class User extends BaseEntity {
   @OneToMany(() => Image, (i: Image) => i.user, { cascade: true })
   images: Image[];
 
-  @OneToMany(() => UsersResources, (ur: UsersResources) => ur.user, { cascade: true })
-  users_resources: UsersResources[];
-
   @OneToMany(() => Token, (t: Token) => t.user, { cascade: true })
   tokens: Token[];
+
+  @OneToMany(() => UsersMusics, (t: UsersMusics) => t.user, { cascade: true })
+  users_musics: UsersMusics[];
+
+  @OneToMany(() => UsersMovies, (t: UsersMovies) => t.user, { cascade: true })
+  users_movies: UsersMovies[];
+
+  @OneToMany(() => UsersBooks, (t: UsersBooks) => t.user, { cascade: true })
+  users_books: UsersBooks[];
 
   static async findUserByEmail(email: string): Promise<User | undefined> {
     const uRepo = getRepository(User);

@@ -15,11 +15,12 @@ export default async (): Promise<Application> => {
   }
 
   const app = express();
-  // * Routes
-  registerRoutes(app);
 
   // * Middlewares
   registerMiddlewares(app);
+
+  // * Routes
+  registerRoutes(app);
 
   // * Error Handlers
   registerErrorHandlers(app);
